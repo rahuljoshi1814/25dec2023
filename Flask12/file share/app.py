@@ -9,7 +9,14 @@ app.secret_key = 'your_secret_key_here'
 # SQLAlchemy Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://username:password@localhost/db_name'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'your_secret_key_here'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Replace with your email server
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'your_email@gmail.com'  # Replace with your email credentials
+app.config['MAIL_PASSWORD'] = 'your_email_password'
 db = SQLAlchemy(app)
+mail = Mail(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
