@@ -1,0 +1,21 @@
+-- Create database
+
+create database file_sharing_db;
+
+use file_sharing_db;
+create table user (
+    id int auto_increment primary key,
+    email varchar(100) unique not null,
+    password varchar(100) not null,
+    role varchar(20) not null,
+    verified boolean default false
+);
+
+-- Create File table
+create table file (
+    id int auto_increment primary key,
+    filename varchar(100) not null,
+    filepath varchar(100) not null,
+    user_id int not null,
+    foreign key (user_id) references user(id)
+);
